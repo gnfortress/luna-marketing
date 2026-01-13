@@ -1037,4 +1037,8 @@ body {
     gap: 24px;
     text-align: center;
   }
+  .nav-logo-img {
+  height: 40px;
+  width: auto;
+}
 }

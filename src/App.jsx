@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './index.css'
 
+// 로고 이미지
+import logoImg from './assets/images/Logo.png'
+
 // 포트폴리오 이미지
 import tripsimImg from './assets/images/tripsim-home.png'
 import gnfortressImg from './assets/images/gnfortress-logo.png'
@@ -14,16 +17,39 @@ function App() {
     email: '',
     message: ''
   })
+  const [status, setStatus] = useState('idle')
 
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('문의가 접수되었습니다. 24시간 내 연락드리겠습니다.')
-    setFormData({ company: '', name: '', email: '', message: '' })
+    setStatus('submitting')
+    
+    try {
+      const response = await fetch('https://formspree.io/f/mwvvkpjb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          회사명: formData.company,
+          담당자명: formData.name,
+          이메일: formData.email,
+          문의내용: formData.message
+        })
+      })
+      
+      if (response.ok) {
+        setStatus('success')
+        setFormData({ company: '', name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch (error) {
+      setStatus('error')
+    }
   }
 
   const handleChange = (e) => {
@@ -47,15 +73,7 @@ function App() {
       <nav className="nav">
         <div className="nav-container">
           <a href="#" className="nav-logo" onClick={(e) => scrollToSection(e, 'hero')}>
-            <div className="nav-logo-icon">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"/>
-                <circle cx="8" cy="10" r="2" fill="#0F172A"/>
-                <circle cx="14" cy="8" r="1.5" fill="#0F172A"/>
-                <circle cx="15" cy="13" r="1" fill="#0F172A"/>
-              </svg>
-            </div>
-            <span className="nav-logo-text">Luna Marketing Lab</span>
+            <img src={logoImg} alt="Luna Marketing Lab" className="nav-logo-img" />
           </a>
           <ul className="nav-menu">
             <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a></li>
@@ -126,7 +144,7 @@ function App() {
           <div className="section-header">
             <div className="section-tag">ABOUT US</div>
             <h2 className="section-title">검증된 마케팅, 측정 가능한 성장</h2>
-            <p className="section-subtitle">데이터와 성과로 증명하는 디지털 마케팅 및 분석 전문 기업</p>
+            <p className="section-subtitle">데이터와 성과로 증명하는 디지털 마케팅 전문 그룹</p>
           </div>
           <div className="about-content">
             <div className="about-text">
@@ -380,6 +398,7 @@ function App() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -391,6 +410,7 @@ function App() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -402,6 +422,7 @@ function App() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -412,9 +433,19 @@ function App() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    required
                   />
                 </div>
-                <button type="submit" className="form-submit">문의하기</button>
+                {status === 'success' ? (
+                  <div className="form-success">✓ 문의가 접수되었습니다. 24시간 내 연락드리겠습니다.</div>
+                ) : (
+                  <button type="submit" className="form-submit" disabled={status === 'submitting'}>
+                    {status === 'submitting' ? '전송 중...' : '문의하기'}
+                  </button>
+                )}
+                {status === 'error' && (
+                  <div className="form-error">전송에 실패했습니다. 다시 시도해주세요.</div>
+                )}
               </form>
             </div>
             <div className="contact-info">
@@ -436,7 +467,7 @@ function App() {
                   </svg>
                 </div>
                 <div className="info-title">Email</div>
-                <div className="info-value">contact@lunamarketinglab.com</div>
+                <div className="info-value">benkim@lunamarketinglab.com</div>
               </div>
               <div className="info-card">
                 <div className="info-icon">
