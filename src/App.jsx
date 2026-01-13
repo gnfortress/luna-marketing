@@ -467,7 +467,7 @@ function App() {
                   </svg>
                 </div>
                 <div className="info-title">Email</div>
-                <div className="info-value">benkim@lunamarketinglab.com</div>
+                <div className="info-value">benkim08@lunamarketinglab.com</div>
               </div>
               <div className="info-card">
                 <div className="info-icon">
