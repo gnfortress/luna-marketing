@@ -7,7 +7,21 @@ import logoImg from './assets/images/Logo.png'
 // 포트폴리오 이미지
 import tripsimImg from './assets/images/tripsim-home.png'
 import gnfortressImg from './assets/images/gnfortress-logo.png'
-import airpassImg from './assets/images/airpass-kcontent.png'
+import flytoxImg from './assets/images/flytox-home.png'
+import skTenableImg from './assets/images/sk-tenable-home.png'
+import skTrendmicroImg from './assets/images/sk-trendmicro-home.png'
+import skTxoneImg from './assets/images/sk-txone-home.png'
+import wonjaksoImg from './assets/images/wonjakso-home.png'
+
+const portfolioItems = [
+  { key: 'tripsim', img: tripsimImg, alt: 'TripSIM', category: 'B2C · 여행/통신', title: 'TripSIM - eSIM 서비스', desc: '브랜드 네이밍부터 앱 런칭, SNS 마케팅까지 전 과정 담당', tags: ['브랜딩', 'SNS', '광고'] },
+  { key: 'gnfortress', img: gnfortressImg, alt: 'GNFortress', category: 'B2B · 클라우드 보안', title: 'GNFortress - 보안 솔루션', desc: '금융권 레퍼런스 확보, B2B 브랜딩 및 웹사이트 UX 개선', tags: ['B2B', '웹사이트', '전략'] },
+  { key: 'flytox', img: flytoxImg, alt: 'FlytoX', category: 'B2C · 여행/AI', title: 'FlytoX - AI 여행 플래너', desc: '브랜드 네이밍부터 웹사이트 제작, 광고·SNS 마케팅까지 전 과정 담당', tags: ['브랜딩', '웹사이트', '광고'], url: 'https://flytox.co.kr' },
+  { key: 'sk-tenable', img: skTenableImg, alt: 'SK쉴더스 Tenable 랜딩', category: 'B2B · SK쉴더스 총판', title: 'SK쉴더스 × Tenable', desc: '노출 관리 솔루션 국내 총판 SEO/GEO 랜딩, 상담·PoC 전환 설계', tags: ['B2B', 'SEO/GEO', '랜딩'] },
+  { key: 'sk-trendmicro', img: skTrendmicroImg, alt: 'SK쉴더스 트렌드마이크로 랜딩', category: 'B2B · SK쉴더스 총판', title: 'SK쉴더스 × 트렌드마이크로', desc: 'Vision One·Deep Security·TippingPoint 총판 채널 랜딩', tags: ['B2B', 'SEO/GEO', '랜딩'] },
+  { key: 'sk-txone', img: skTxoneImg, alt: 'SK쉴더스 TXOne 랜딩', category: 'B2B · SK쉴더스 총판', title: 'SK쉴더스 × TXOne', desc: '제조 현장 OT 보안 솔루션 총판 랜딩, 실무자 검색 키워드 공략', tags: ['B2B', 'OT 보안', '랜딩'] },
+  { key: 'wonjakso', img: wonjaksoImg, alt: '원작소', category: 'B2C · 웹소설/콘텐츠', title: '원작소 - 웹소설 플랫폼', desc: '브랜드 네이밍, 웹사이트 제작, 작가 모집·콘텐츠 기획부터 광고·SNS 마케팅까지 전 과정 담당', tags: ['브랜딩', '콘텐츠', 'SNS'], url: 'https://wonjakso.com' }
+]
 
 function App() {
   const [activeFaq, setActiveFaq] = useState(null)
@@ -268,51 +282,25 @@ function App() {
             <p className="section-subtitle">클라이언트와 함께 만들어낸 성과</p>
           </div>
           <div className="portfolio-grid">
-            <div className="portfolio-card">
-              <div className="portfolio-image tripsim">
-                <img src={tripsimImg} alt="TripSIM" />
-              </div>
-              <div className="portfolio-info">
-                <div className="portfolio-category">B2C · 여행/통신</div>
-                <div className="portfolio-title">TripSIM - eSIM 서비스</div>
-                <div className="portfolio-desc">브랜드 네이밍부터 앱 런칭, SNS 마케팅까지 전 과정 담당</div>
-                <div className="portfolio-tags">
-                  <span className="portfolio-tag">브랜딩</span>
-                  <span className="portfolio-tag">SNS</span>
-                  <span className="portfolio-tag">광고</span>
-                </div>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-image gnfortress">
-                <img src={gnfortressImg} alt="GNFortress" />
-              </div>
-              <div className="portfolio-info">
-                <div className="portfolio-category">B2B · 클라우드 보안</div>
-                <div className="portfolio-title">GNFortress - 보안 솔루션</div>
-                <div className="portfolio-desc">금융권 레퍼런스 확보, B2B 브랜딩 및 웹사이트 UX 개선</div>
-                <div className="portfolio-tags">
-                  <span className="portfolio-tag">B2B</span>
-                  <span className="portfolio-tag">웹사이트</span>
-                  <span className="portfolio-tag">전략</span>
-                </div>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-image airpass">
-                <img src={airpassImg} alt="AirPass VPN" />
-              </div>
-              <div className="portfolio-info">
-                <div className="portfolio-category">B2C · 보안/VPN</div>
-                <div className="portfolio-title">AirPass VPN - VPN 서비스</div>
-                <div className="portfolio-desc">K-콘텐츠 타겟 포지셔닝, ASO 및 마케팅 크리에이티브</div>
-                <div className="portfolio-tags">
-                  <span className="portfolio-tag">ASO</span>
-                  <span className="portfolio-tag">크리에이티브</span>
-                  <span className="portfolio-tag">광고</span>
-                </div>
-              </div>
-            </div>
+            {portfolioItems.map((item) => {
+              const Card = item.url ? 'a' : 'div'
+              const linkProps = item.url ? { href: item.url, target: '_blank', rel: 'noopener noreferrer' } : {}
+              return (
+                <Card className="portfolio-card" key={item.key} {...linkProps}>
+                  <div className="portfolio-image">
+                    <img src={item.img} alt={item.alt} loading="lazy" />
+                  </div>
+                  <div className="portfolio-info">
+                    <div className="portfolio-category">{item.category}</div>
+                    <div className="portfolio-title">{item.title}</div>
+                    <div className="portfolio-desc">{item.desc}</div>
+                    <div className="portfolio-tags">
+                      {item.tags.map((tag) => <span className="portfolio-tag" key={tag}>{tag}</span>)}
+                    </div>
+                  </div>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>
