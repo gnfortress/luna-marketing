@@ -177,14 +177,11 @@ function App() {
                     <td><span className="approval-empty">귀사</span></td>
                     <td><span className="approval-empty">귀사</span></td>
                     <td className="approval-ceo">
-                      <Stamp className="stamp-seal">GMU<small>DIGITAL<br />MARKETING<br />ANALYTICS</small></Stamp>
+                      <Stamp className="stamp-seal">LUNA<small>MARKETING<br />LAB</small></Stamp>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <figcaption>
-                <strong>대표</strong> George Mason University<br />디지털마케팅·애널리틱스 학사
-              </figcaption>
             </figure>
           </div>
 
