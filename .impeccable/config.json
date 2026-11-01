@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-01T05:04:27.249Z",
+        "reason": "Claude: unchosen decision-round sketch, not shipped"
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-annual.html"
+        ],
+        "createdAt": "2026-11-01T05:04:27.614Z",
+        "reason": "Claude: unchosen decision-round sketch, not shipped"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-annual.html"
+        ],
+        "createdAt": "2026-11-01T05:04:28.032Z",
+        "reason": "Claude: unchosen decision-round sketch, not shipped"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/*.html"
+        ],
+        "createdAt": "2026-11-01T05:12:25.931Z",
+        "reason": "Claude: decision-round sketches predate DESIGN.md and are not shipped"
+      }
+    ]
+  }
+}

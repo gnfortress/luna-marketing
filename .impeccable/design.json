@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T00:00:00Z",
+  "title": "Design System: Luna Marketing Lab",
+  "extensions": {
+    "colorMeta": {
+      "navy": { "role": "primary", "displayName": "Report Navy", "canonical": "oklch(35.2% 0.078 257.5)", "tonalRamp": ["#020B1C", "#112541", "#294267", "#45628D", "#6584B1", "#89A7D2", "#B1CBF0", "#DEF0FF"] },
+      "red": { "role": "secondary", "displayName": "Seal Red", "canonical": "oklch(54.7% 0.176 28.8)", "tonalRamp": ["#270000", "#550000", "#830000", "#AE261E", "#D64E41", "#F97969", "#FFA697", "#FFD8CB"] },
+      "red-deep": { "role": "secondary", "displayName": "Pressed Red", "canonical": "oklch(47.4% 0.155 29.1)", "tonalRamp": ["#240000", "#500000", "#7C110B", "#A73328", "#CE5749", "#F08070", "#FFAB9D", "#FFDBCF"] },
+      "desk": { "role": "neutral", "displayName": "Desk Gray", "canonical": "oklch(89.6% 0.005 247.9)", "tonalRamp": ["#0A0B0C", "#242527", "#404244", "#5F6164", "#808385", "#A3A5A8", "#C7C9CC", "#EDEFF0"] },
+      "paper": { "role": "neutral", "displayName": "Report Paper", "canonical": "oklch(98.8% 0.003 106.4)", "tonalRamp": ["#0B0B0A", "#252524", "#424241", "#616160", "#828281", "#A5A5A3", "#C9C9C8", "#EEEEED"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(19.1% 0 0)", "tonalRamp": ["#0B0B0B", "#252525", "#424242", "#616161", "#828282", "#A5A5A5", "#C9C9C9", "#EEEEEE"] },
+      "rule": { "role": "neutral", "displayName": "Ink Rule", "canonical": "oklch(19.1% 0 0)", "tonalRamp": ["#0B0B0B", "#252525", "#424242", "#616161", "#828282", "#A5A5A5", "#C9C9C9", "#EEEEEE"] },
+      "ink-2": { "role": "neutral", "displayName": "Secondary Ink", "canonical": "oklch(41.9% 0.006 248.0)", "tonalRamp": ["#0A0B0C", "#232527", "#404245", "#5E6265", "#7F8386", "#A2A5A8", "#C7C9CC", "#EDEFF1"] },
+      "hair": { "role": "neutral", "displayName": "Hairline", "canonical": "oklch(83.2% 0.005 106.5)", "tonalRamp": ["#0B0B0A", "#252523", "#42423F", "#61615E", "#82827F", "#A5A5A2", "#C9C9C6", "#EEEEEC"] },
+      "cell": { "role": "neutral", "displayName": "Label Cell Gray", "canonical": "oklch(95.1% 0.004 121.6)", "tonalRamp": ["#0B0B0A", "#252524", "#424240", "#61625F", "#828380", "#A4A5A3", "#C9C9C7", "#EEEFED"] },
+      "navy-ink": { "role": "neutral", "displayName": "Navy Paper", "canonical": "oklch(94.4% 0.011 256.7)", "tonalRamp": ["#0A0B0E", "#222529", "#3F4247", "#5D6267", "#7E8389", "#A1A5AB", "#C6C9CF", "#ECEFF2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Cover headline on the navy cover band. Once per page." },
+      "headline": { "displayName": "Headline", "purpose": "Sheet title bands, preceded by a 700 roman numeral in Navy Paper." },
+      "title": { "displayName": "Title", "purpose": "Numbered sub-titles inside a sheet and case project names." },
+      "report-main": { "displayName": "Report Main", "purpose": "□ bullet points in the report voice." },
+      "report-sub": { "displayName": "Report Sub", "purpose": "○ sub-points in secondary ink." },
+      "lead": { "displayName": "Lead", "purpose": "One-sentence sheet introduction, max 62ch." },
+      "body": { "displayName": "Body", "purpose": "Table cells, inputs, UI text, with tabular numerals." },
+      "label": { "displayName": "Label", "purpose": "Table heads, label cells, 결재란 headers, action links." },
+      "folio": { "displayName": "Folio", "purpose": "\"- n -\" page numbers and figure captions." }
+    },
+    "shadows": [
+      { "name": "sheet-on-desk", "value": "0 1px 2px rgba(20, 24, 28, 0.12), 0 12px 32px -12px rgba(20, 24, 28, 0.22)", "purpose": "Every sheet. The only elevation in the system." },
+      { "name": "seal-ring", "value": "inset 0 0 0 3px var(--paper), inset 0 0 0 4.5px currentColor", "purpose": "Inner double ring of the GMU seal. A drawing device, not elevation." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All transitions and the stamp press." },
+      { "name": "button-color", "value": "background-color 0.2s", "purpose": "Button hover color shift." },
+      { "name": "chevron-turn", "value": "transform 0.3s", "purpose": "FAQ chevron rotates 180deg when open." },
+      { "name": "case-zoom", "value": "transform 0.6s, scale(1.03)", "purpose": "Linked case screenshot on hover." },
+      { "name": "press-seal", "value": "0.9s, 0.35s delay; scale 1.6 to 1, blur 2px to 0, settle at 0.92 opacity, rotate -9deg", "purpose": "GMU seal presses into the 대표 cell once on load." },
+      { "name": "press-received", "value": "0.6s; scale 1.6 to 1, blur 2px to 0, settle at 0.92 opacity, rotate 8deg", "purpose": "접수 stamp lands on a form after successful submission." },
+      { "name": "reduced-motion", "value": "animation and transition durations 0.01ms, smooth scroll off", "purpose": "prefers-reduced-motion: reduce." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "max-width: 640px" },
+      { "name": "tablet", "value": "max-width: 960px" },
+      { "name": "wide", "value": "min-width: 1100px" },
+      { "name": "short-desktop", "value": "min-width: 961px and max-height: 940px" },
+      { "name": "very-short-desktop", "value": "min-width: 961px and max-height: 760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Red)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Square red submit button, used only to send a request.",
+      "html": "<button class=\"ds-btn-red\">요청서 보내기</button>",
+      "css": ".ds-btn-red { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border: 0; border-radius: 0; background: #C2392E; color: #fff; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-red:hover { background: #A12C22; } .ds-btn-red:focus-visible { outline: 2px solid #1F3B63; outline-offset: 2px; } .ds-btn-red:disabled { cursor: progress; opacity: 0.7; }"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Compact ink button in the TOC bar that jumps to the request sheet.",
+      "html": "<a href=\"#contact\" class=\"ds-btn-ink\">상담 요청</a>",
+      "css": ".ds-btn-ink { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 18px; border-radius: 0; background: #141414; color: #fff; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-ink:hover { background: #1F3B63; } .ds-btn-ink:focus-visible { outline: 2px solid #1F3B63; outline-offset: 2px; }"
+    },
+    {
+      "name": "Sheet with Title Band",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Paper sheet on the desk with a navy title band, report bullets, and a folio.",
+      "html": "<div class=\"ds-desk\"><section class=\"ds-sheet\"><h2 class=\"ds-band\"><span class=\"ds-band-num\">Ⅰ.</span> 회사 개요</h2><p class=\"ds-main\">직접 운영하는 서비스에서 먼저 검증한 방법만 제안합니다</p><p class=\"ds-sub\">이론이 아닌, 실전에서 확인한 방법론을 제공합니다</p><div class=\"ds-folio\">- 2 -</div></section></div>",
+      "css": ".ds-desk { background: #DADDE0; padding: 24px; } .ds-sheet { position: relative; background: #FBFBF9; padding: 40px 40px 64px; box-shadow: 0 1px 2px rgba(20, 24, 28, 0.12), 0 12px 32px -12px rgba(20, 24, 28, 0.22); color: #141414; } .ds-band { background: #1F3B63; color: #fff; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; padding: 14px 24px; margin: 0 0 36px; } .ds-band-num { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight: 700; color: #E8EDF4; } .ds-main, .ds-sub { position: relative; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; margin: 0; } .ds-main { font-size: 21px; font-weight: 600; line-height: 1.55; padding-left: 1.5em; } .ds-main::before { content: '□'; position: absolute; left: 0; font-weight: 400; } .ds-sub { margin-top: 6px; font-size: 16px; line-height: 1.6; color: #4A4D50; padding-left: 3.1em; } .ds-sub::before { content: '○'; position: absolute; left: 1.6em; } .ds-folio { position: absolute; left: 0; right: 0; bottom: 24px; text-align: center; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 14px; color: #4A4D50; }"
+    },
+    {
+      "name": "결재란 with GMU Seal",
+      "kind": "custom",
+      "refersTo": "stamp-seal",
+      "description": "Three-column approval box. The red seal presses into the 대표 cell once.",
+      "html": "<table class=\"ds-approval\"><thead><tr><th>담당</th><th>검토</th><th>대표</th></tr></thead><tbody><tr><td><span class=\"ds-approval-empty\">귀사</span></td><td><span class=\"ds-approval-empty\">귀사</span></td><td><span class=\"ds-seal\">GMU<small>DIGITAL<br>MARKETING<br>ANALYTICS</small></span></td></tr></tbody></table>",
+      "css": ".ds-approval { border-collapse: collapse; border: 2px solid #141414; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 14px; text-align: center; background: #FBFBF9; } .ds-approval th { background: #EEEFEC; font-weight: 700; padding: 5px 0; width: 92px; border-left: 1px solid #141414; border-bottom: 1px solid #141414; } .ds-approval th:first-child, .ds-approval td:first-child { border-left: 0; } .ds-approval td { height: 92px; border-left: 1px solid #141414; vertical-align: middle; } .ds-approval-empty { color: #6B6E71; font-size: 13px; } .ds-seal { display: inline-grid; place-items: center; width: 80px; height: 80px; border-radius: 50%; color: #C2392E; border: 2.5px solid currentColor; font-weight: 700; font-size: 15px; line-height: 1; padding-top: 4px; letter-spacing: 0.02em; transform: rotate(-9deg); box-shadow: inset 0 0 0 3px #FBFBF9, inset 0 0 0 4.5px currentColor; mix-blend-mode: multiply; opacity: 0.92; animation: ds-press 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; } .ds-seal small { display: block; margin-top: 2px; font-size: 7px; font-weight: 700; letter-spacing: 0.06em; line-height: 1.25; } @keyframes ds-press { 0% { opacity: 0; transform: rotate(-9deg) scale(1.6); filter: blur(2px); } 55% { opacity: 1; filter: blur(0); } 100% { opacity: 0.92; transform: rotate(-9deg) scale(1); } } @media (prefers-reduced-motion: reduce) { .ds-seal { animation: none; } }"
+    },
+    {
+      "name": "Grid Table",
+      "kind": "custom",
+      "refersTo": "label-cell",
+      "description": "Ruled table: 2px ink top and bottom, hairline rows, gray label cells.",
+      "html": "<table class=\"ds-table\"><caption>운영 원칙</caption><thead><tr><th>원칙</th><th>의미</th></tr></thead><tbody><tr><th>Data-Driven</th><td>판단은 데이터 기반으로</td></tr><tr><th>Simplicity</th><td>복잡한 문제는 간결하게</td></tr></tbody></table>",
+      "css": ".ds-table { width: 100%; border-collapse: collapse; border-top: 2px solid #141414; border-bottom: 2px solid #141414; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 16px; color: #141414; background: #FBFBF9; } .ds-table caption { text-align: left; font-weight: 700; font-size: 15px; padding-bottom: 8px; } .ds-table th, .ds-table td { padding: 14px 18px; border-bottom: 1px solid #C8C8C4; text-align: left; vertical-align: top; } .ds-table thead th { background: #EEEFEC; border-bottom: 1px solid #141414; font-size: 14px; font-weight: 700; padding-top: 10px; padding-bottom: 10px; } .ds-table tbody th { font-weight: 700; white-space: nowrap; border-right: 1px solid #C8C8C4; } .ds-table tbody tr:last-child th, .ds-table tbody tr:last-child td { border-bottom: 0; }"
+    },
+    {
+      "name": "Request Row",
+      "kind": "input",
+      "refersTo": "field-cell",
+      "description": "Boxed one-line form: label cell, two borderless field cells, red submit.",
+      "html": "<form class=\"ds-request\"><div class=\"ds-request-label\">검토 요청</div><label class=\"ds-request-field\"><input placeholder=\"회사명\" aria-label=\"회사명\"></label><label class=\"ds-request-field\"><input type=\"email\" placeholder=\"회신받을 이메일\" aria-label=\"이메일\"></label><button class=\"ds-request-btn\">상담 요청</button></form>",
+      "css": ".ds-request { display: grid; grid-template-columns: 140px 1fr 1fr 200px; border: 2px solid #141414; background: #FBFBF9; font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; } .ds-request-label { display: grid; place-items: center; background: #EEEFEC; font-weight: 700; border-right: 1px solid #141414; } .ds-request-field { display: block; border-right: 1px solid #141414; } .ds-request input { width: 100%; height: 60px; border: 0; background: transparent; padding: 0 18px; font: 16px 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; color: #141414; } .ds-request input::placeholder { color: #66696C; } .ds-request input:focus-visible { outline: 2px solid #1F3B63; outline-offset: -3px; } .ds-request-btn { min-height: 60px; border: 0; border-radius: 0; background: #C2392E; color: #fff; font: 700 17px 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-request-btn:hover { background: #A12C22; } .ds-request-btn:focus-visible { outline: 2px solid #1F3B63; outline-offset: 2px; }"
+    },
+    {
+      "name": "TOC Bar",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Sticky translucent desk-gray bar with roman-numeral section links.",
+      "html": "<nav class=\"ds-toc\"><ol><li><a href=\"#about\"><span>Ⅰ</span>개요</a></li><li><a href=\"#services\"><span>Ⅱ</span>서비스</a></li><li><a href=\"#portfolio\"><span>Ⅲ</span>수행 사례</a></li></ol></nav>",
+      "css": ".ds-toc { height: 64px; display: flex; align-items: center; background: rgba(218, 221, 224, 0.82); backdrop-filter: blur(8px); border-bottom: 1px solid #C3C7CB; padding: 0 4px; } .ds-toc ol { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; } .ds-toc a { display: block; padding: 8px 12px; font: 500 15px 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; color: #141414; text-decoration: none; white-space: nowrap; text-underline-offset: 3px; } .ds-toc a:hover { text-decoration: underline; } .ds-toc a:focus-visible { outline: 2px solid #1F3B63; outline-offset: 2px; } .ds-toc span { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight: 700; margin-right: 6px; color: #1F3B63; }"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Ruled accordion row with navy Q. and red A. marks.",
+      "html": "<div class=\"ds-faq\"><button class=\"ds-faq-q\" aria-expanded=\"true\"><span class=\"ds-faq-mark\">Q.</span><span class=\"ds-faq-text\">상담은 어떻게 진행되나요?</span><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M3 6l5 5 5-5\" fill=\"none\" stroke=\"#141414\" stroke-width=\"1.8\"/></svg></button><div class=\"ds-faq-a\"><span class=\"ds-faq-mark ds-faq-mark-a\">A.</span><p>온라인/오프라인 미팅 가능하며, 24시간 내 연락드립니다.</p></div></div>",
+      "css": ".ds-faq { border-top: 2px solid #141414; border-bottom: 2px solid #141414; background: #FBFBF9; } .ds-faq-q { width: 100%; display: flex; align-items: center; gap: 12px; padding: 16px 4px; background: none; border: 0; font: 700 17px 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; color: #141414; text-align: left; cursor: pointer; } .ds-faq-q:hover .ds-faq-text { text-decoration: underline; text-underline-offset: 4px; } .ds-faq-q:focus-visible { outline: 2px solid #1F3B63; outline-offset: 2px; } .ds-faq-q svg { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-faq-q[aria-expanded=\"true\"] svg { transform: rotate(180deg); } .ds-faq-text { flex: 1; } .ds-faq-mark { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight: 700; color: #1F3B63; flex: none; } .ds-faq-mark-a { color: #C2392E; } .ds-faq-a { display: flex; gap: 12px; padding: 0 4px 18px; font: 16px/1.7 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; } .ds-faq-a p { margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Forwarded Report",
+    "overview": "The site is a finished Korean one-page corporate report (개조식 1장 보고서) that a marketing manager could forward upward without rewriting a line. Every surface is a sheet of cool off-white paper lying on a pale gray desk. A deep navy band heads each sheet. Content is set in the bureaucratic grammar Korean readers already trust: □ main points and ○ sub-points, ruled tables with gray label cells, a 결재란 approval box, page folios set as \"- 1 -\", and a closing \"끝.\".\n\nDensity is report density: tight, ruled, and scannable rather than airy. One family, Pretendard, carries everything; hierarchy comes from weight, size, and color, not from a change of typeface. Color is almost entirely ink on paper. Navy marks structure (title bands, numerals, links), and red is reserved for the seal and the act of submitting. Depth exists only between the sheet and the desk. Everything on the sheet is flat, square, and ruled.\n\nMotion is a single physical gesture. A stamp presses into paper: the GMU seal lands in the 대표 cell on load, and a 접수 stamp lands on a form when it is received. Nothing else animates beyond short hover transitions.",
+    "keyCharacteristics": [
+      "Paper sheets (max 1120px) stacked on a desk-gray ground, each with a navy title band and a centered \"- n -\" folio.",
+      "개조식 bullets: □ for main points (600), ○ for indented sub-points (400, secondary ink).",
+      "Tables as the primary container: 2px ink rules top and bottom, 1px hairline inner rules, gray label cells.",
+      "Square corners everywhere. The only round shapes are the stamps.",
+      "Red is stamp ink and the submit action. It is never decorative.",
+      "Roman numerals (Ⅰ–Ⅴ) in navy 700 number the sections in both the TOC and the title bands."
+    ],
+    "rules": [
+      { "name": "The Stamp Ink Rule", "body": "Red appears only where something is sealed, received, or sent: stamps, submit buttons, and the answer mark. It never fills a band, a background, or a heading.", "section": "colors" },
+      { "name": "The Two Rules Rule", "body": "Ink rules are 2px at the outer edges of a ruled block and 1px inside. Hairline gray is for row separation; ink 1px is for cell walls in boxed forms (결재란, request row).", "section": "colors" },
+      { "name": "The One Family Rule", "body": "Every surface is Pretendard through `--font`. Hierarchy is weight, size, and color: 700 for anything that names, labels, or operates (titles, table heads, buttons, numerals, the closing \"끝.\"), 600 for □ points, 500 for TOC labels, 400 for the report's prose (sub-points, leads, answers, descriptions, folios, captions). No second family, and nothing heavier than 700.", "section": "typography" },
+      { "name": "The Numeral Rule", "body": "Section and step numbers are 700 in navy: roman numerals Ⅰ–Ⅴ for sheets (Navy Paper inside the title bands, navy in the TOC), arabic step numbers in the flow, and \"Q.\" for the FAQ, with its \"A.\" in red.", "section": "typography" },
+      { "name": "The Paper Only Rule", "body": "Only sheets cast shadows. Tables, cards, buttons, and forms on a sheet stay flat.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do open every new content block as a sheet with a navy title band, a roman numeral, and a \"- n -\" folio.",
+      "Do write arguments as 개조식 □ / ○ bullets (□ at 600, ○ at 400 in secondary ink), and put comparable facts in ruled grid tables with gray label cells.",
+      "Do draw structure with rules: 2px ink at the outer edges, 1px hairline (#C8C8C4) between rows, 1px ink for walls inside boxed forms.",
+      "Do keep red for stamps and submit actions, and keep the stamp gesture to the two moments it marks (seal on load, 접수 on success).",
+      "Do keep the cover's request row above the fold, using the short-viewport compressions.",
+      "Do set section and step numbers in navy 700."
+    ],
+    "donts": [
+      "Don't round corners on anything except the stamps.",
+      "Don't add shadows to anything on a sheet. Only the sheet lifts off the desk.",
+      "Don't use red for bands, backgrounds, headings, or emphasis.",
+      "Don't fill surfaces with decorative gradients. The only gradient is the functional fade mask on the mobile TOC.",
+      "Don't add a second typeface or mark the report voice by switching families. Hierarchy stays in weight, size, and color within Pretendard, and nothing goes above 700.",
+      "Don't give inputs their own borders or radius. They take the borders of their cells."
+    ]
+  }
+}

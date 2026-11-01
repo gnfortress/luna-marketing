@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>통장 기장부</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;background:#E7EBE5;font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1B2421;display:flex}
+.cover{width:420px;background:#0F5A52;color:#DDE9E4;padding:56px 44px;display:flex;flex-direction:column;justify-content:space-between}
+.cover .mark{font-size:15px;letter-spacing:.3em}
+.cover h2{font-size:44px;line-height:1.15;font-weight:700;color:#F3F5F1}
+.cover nav{display:flex;flex-direction:column;gap:10px;font-size:16px}
+.page{flex:1;background:#F3F5F1;background-image:repeating-linear-gradient(0deg,transparent 0 63px,#C9D3CC 63px 64px);padding:40px 64px;position:relative}
+.head{display:grid;grid-template-columns:120px 1fr 260px 140px;border-bottom:2px solid #1B2421;padding-bottom:10px;font-size:14px;letter-spacing:.1em}
+.row{display:grid;grid-template-columns:120px 1fr 260px 140px;height:64px;align-items:center;font-family:"Courier New",monospace;color:#2E3F8F;font-size:16px}
+.big{height:256px;align-items:start;padding-top:16px}
+.big h1{font-family:"Pretendard",sans-serif;color:#1B2421;font-size:68px;line-height:1.12;font-weight:800;letter-spacing:-.02em}
+.seal{width:116px;height:116px;border:4px solid #C2392E;border-radius:50%;color:#C2392E;display:grid;place-items:center;text-align:center;font-size:13px;font-weight:700;transform:rotate(-8deg)}
+.form{display:grid;grid-template-columns:120px 1fr 1fr 220px;height:72px;align-items:center;gap:16px;border-top:2px solid #1B2421;border-bottom:2px solid #1B2421;margin-top:8px}
+.form input{height:44px;border:0;border-bottom:1px solid #1B2421;background:transparent;font-size:16px}
+.form button{height:52px;background:#0F5A52;color:#fff;border:0;font-size:18px;font-weight:700}
+</style></head><body>
+<aside class="cover"><div class="mark">LUNA MARKETING LAB</div><h2>마케팅<br>기장부</h2><nav><span>사례</span><span>서비스</span><span>진행 방식</span><span>상담</span></nav></aside>
+<main class="page">
+<div class="head"><span>일자</span><span>적요</span><span>근거</span><span>확인</span></div>
+<div class="row big"><span>2026.11</span><h1>감이 아니라<br>기록으로 일합니다</h1><span>GA4 · KPI 설계 · A/B 테스트</span><div class="seal">GMU<br>디지털마케팅<br>애널리틱스</div></div>
+<div class="row"><span>01</span><span>TripSIM 네이밍·앱 런칭·SNS</span><span>직접 운영</span><span>✓</span></div>
+<div class="row"><span>02</span><span>SK쉴더스 × Tenable SEO/GEO 랜딩</span><span>총판 채널</span><span>✓</span></div>
+<div class="row"><span>03</span><span>원작소 웹사이트·콘텐츠·광고</span><span>wonjakso.com</span><span>✓</span></div>
+<form class="form"><span style="font-family:Courier New;color:#2E3F8F">다음 줄</span><input placeholder="회사명"><input placeholder="이메일"><button>상담 기장하기</button></form>
+</main></body></html>

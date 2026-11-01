@@ -13,9 +13,19 @@ import skTrendmicroImg from './assets/images/sk-trendmicro-home.png'
 import skTxoneImg from './assets/images/sk-txone-home.png'
 import wonjaksoImg from './assets/images/wonjakso-home.png'
 
+const FORM_ENDPOINT = 'https://formspree.io/f/mwvvkpjb'
+
+const toc = [
+  { id: 'about', num: 'Ⅰ', label: '개요' },
+  { id: 'services', num: 'Ⅱ', label: '서비스' },
+  { id: 'portfolio', num: 'Ⅲ', label: '수행 사례' },
+  { id: 'process', num: 'Ⅳ', label: '추진 절차' },
+  { id: 'contact', num: 'Ⅴ', label: '검토 요청' },
+]
+
 const portfolioItems = [
   { key: 'tripsim', img: tripsimImg, alt: 'TripSIM', category: 'B2C · 여행/통신', title: 'TripSIM - eSIM 서비스', desc: '브랜드 네이밍부터 앱 런칭, SNS 마케팅까지 전 과정 담당', tags: ['브랜딩', 'SNS', '광고'] },
-  { key: 'gnfortress', img: gnfortressImg, alt: 'GNFortress', category: 'B2B · 클라우드 보안', title: 'GNFortress - 보안 솔루션', desc: '금융권 레퍼런스 확보, B2B 브랜딩 및 웹사이트 UX 개선', tags: ['B2B', '웹사이트', '전략'] },
+  { key: 'gnfortress', img: gnfortressImg, alt: 'GNFortress', category: 'B2B · 클라우드 보안', title: 'GNFortress - 보안 솔루션', desc: '금융권 레퍼런스 확보, B2B 브랜딩 및 웹사이트 UX 개선', tags: ['B2B', '웹사이트', '전략'], contain: true },
   { key: 'flytox', img: flytoxImg, alt: 'FlytoX', category: 'B2C · 여행/AI', title: 'FlytoX - AI 여행 플래너', desc: '브랜드 네이밍부터 웹사이트 제작, 광고·SNS 마케팅까지 전 과정 담당', tags: ['브랜딩', '웹사이트', '광고'], url: 'https://flytox.co.kr' },
   { key: 'sk-tenable', img: skTenableImg, alt: 'SK쉴더스 Tenable 랜딩', category: 'B2B · SK쉴더스 총판', title: 'SK쉴더스 × Tenable', desc: '노출 관리 솔루션 국내 총판 SEO/GEO 랜딩, 상담·PoC 전환 설계', tags: ['B2B', 'SEO/GEO', '랜딩'] },
   { key: 'sk-trendmicro', img: skTrendmicroImg, alt: 'SK쉴더스 트렌드마이크로 랜딩', category: 'B2B · SK쉴더스 총판', title: 'SK쉴더스 × 트렌드마이크로', desc: 'Vision One·Deep Security·TippingPoint 총판 채널 랜딩', tags: ['B2B', 'SEO/GEO', '랜딩'] },
@@ -23,55 +33,99 @@ const portfolioItems = [
   { key: 'wonjakso', img: wonjaksoImg, alt: '원작소', category: 'B2C · 웹소설/콘텐츠', title: '원작소 - 웹소설 플랫폼', desc: '브랜드 네이밍, 웹사이트 제작, 작가 모집·콘텐츠 기획부터 광고·SNS 마케팅까지 전 과정 담당', tags: ['브랜딩', '콘텐츠', 'SNS'], url: 'https://wonjakso.com' }
 ]
 
-function App() {
-  const [activeFaq, setActiveFaq] = useState(null)
-  const [formData, setFormData] = useState({
-    company: '',
-    name: '',
-    email: '',
-    message: ''
-  })
+const principles = [
+  { name: 'Data-Driven', desc: '판단은 데이터 기반으로' },
+  { name: 'Simplicity', desc: '복잡한 문제는 간결하게' },
+  { name: 'Transparency', desc: '명확한 프로세스와 소통' },
+  { name: 'Integrity', desc: '책임있는 파트너십' },
+]
+
+const services = [
+  { name: '브랜드 전략', work: '포지셔닝 전략, 브랜드 아이덴티티, 슬로건·톤앤매너 정의' },
+  { name: '퍼포먼스 마케팅', work: 'Meta/TikTok Ads, 타겟 세그멘테이션, A/B 테스트' },
+  { name: 'SNS 운영', work: '콘텐츠 캘린더, 크리에이티브 제작, 채널 운영' },
+  { name: '데이터 분석', work: 'GA4 설정, KPI 대시보드, ROAS 최적화' },
+  { name: '웹사이트·검색 노출', work: '랜딩 페이지 제작, SEO/GEO, 상담 전환 설계' },
+]
+
+const steps = [
+  { name: '분석', desc: '시장, 경쟁사, 타겟 고객 분석' },
+  { name: '전략', desc: '목표 설정 및 실행 계획 수립' },
+  { name: '실행', desc: '캠페인 운영 및 콘텐츠 제작' },
+  { name: '최적화', desc: '데이터 기반 성과 분석' },
+]
+
+const terms = [
+  { label: '상담 방식', value: '온라인/오프라인 미팅 가능, 요청 후 24시간 내 연락' },
+  { label: '계약 형태', value: '프로젝트 단위 계약 또는 월 단위 운영 계약' },
+  { label: '비용 구조', value: '대행비와 광고비는 별도' },
+  { label: '주요 분야', value: 'B2B IT·보안, 스타트업, SMB, 소비재, 여행·뷰티' },
+]
+
+const faqs = [
+  { q: '상담은 어떻게 진행되나요?', a: '온라인/오프라인 미팅 가능하며, 메일로 미팅 요청 연락주시면 24시간 내 연락드립니다.' },
+  { q: '최소 계약 기간이 있나요?', a: '프로젝트 단위 계약 또는 월 단위 운영 계약 모두 가능합니다.' },
+  { q: '광고 집행 비용은 포함인가요?', a: '대행비와 광고비는 별도로 진행됩니다.' },
+  { q: '어떤 산업을 전문으로 하나요?', a: 'B2B IT·보안, 스타트업, SMB, 소비재, 여행·뷰티 분야 등을 중심으로 진행합니다.' }
+]
+
+const emptyForm = { company: '', name: '', email: '', message: '' }
+
+// 두 폼(첫 화면 간이 요청, 하단 신청서)이 같은 Formspree 주소로 보낸다
+function useInquiry() {
+  const [data, setData] = useState(emptyForm)
   const [status, setStatus] = useState('idle')
 
-  const toggleFaq = (index) => {
-    setActiveFaq(activeFaq === index ? null : index)
-  }
+  const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value })
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     setStatus('submitting')
-    
     try {
-      const response = await fetch('https://formspree.io/f/mwvvkpjb', {
+      const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          회사명: formData.company,
-          담당자명: formData.name,
-          이메일: formData.email,
-          문의내용: formData.message
+          회사명: data.company,
+          담당자명: data.name,
+          이메일: data.email,
+          문의내용: data.message
         })
       })
-      
       if (response.ok) {
         setStatus('success')
-        setFormData({ company: '', name: '', email: '', message: '' })
+        setData(emptyForm)
       } else {
         setStatus('error')
       }
-    } catch (error) {
+    } catch {
       setStatus('error')
     }
   }
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  return { data, status, onChange, onSubmit }
+}
+
+function Stamp({ children, className = '' }) {
+  return <span className={`stamp ${className}`} aria-hidden="true">{children}</span>
+}
+
+function Sheet({ id, page, title, num, children }) {
+  return (
+    <section className="sheet" id={id} aria-labelledby={`${id}-title`}>
+      <h2 className="sheet-title" id={`${id}-title`}>
+        <span className="sheet-num">{num}.</span> {title}
+      </h2>
+      {children}
+      <div className="folio" aria-hidden="true">- {page} -</div>
+    </section>
+  )
+}
+
+function App() {
+  const [activeFaq, setActiveFaq] = useState(null)
+  const quick = useInquiry()
+  const full = useInquiry()
 
   const scrollToSection = (e, sectionId) => {
     e.preventDefault()
@@ -82,410 +136,270 @@ function App() {
   }
 
   return (
-    <>
-      {/* Navigation */}
-      <nav className="nav">
-        <div className="nav-container">
-          <a href="#" className="nav-logo" onClick={(e) => scrollToSection(e, 'hero')}>
-            <img src={logoImg} alt="Luna Marketing Lab" className="nav-logo-img" />
+    <div className="desk">
+      <header className="toc">
+        <div className="toc-inner">
+          <a href="#hero" className="toc-logo" onClick={(e) => scrollToSection(e, 'hero')}>
+            <img src={logoImg} alt="Luna Marketing Lab" />
           </a>
-          <ul className="nav-menu">
-            <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a></li>
-            <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Services</a></li>
-            <li><a href="#portfolio" onClick={(e) => scrollToSection(e, 'portfolio')}>Portfolio</a></li>
-            <li><a href="#process" onClick={(e) => scrollToSection(e, 'process')}>Process</a></li>
-            <li><a href="#faq" onClick={(e) => scrollToSection(e, 'faq')}>FAQ</a></li>
+          <nav aria-label="목차">
+            <ol className="toc-list">
+              {toc.map((t) => (
+                <li key={t.id}>
+                  <a href={`#${t.id}`} onClick={(e) => scrollToSection(e, t.id)}>
+                    <span className="toc-num">{t.num}</span>{t.label}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <a href="#contact" className="btn btn-ink toc-cta" onClick={(e) => scrollToSection(e, 'contact')}>상담 요청</a>
+        </div>
+      </header>
+
+      <main>
+        {/* 1면: 요약 보고 */}
+        <article className="sheet sheet-cover" id="hero" aria-labelledby="hero-title">
+          <div className="cover-head">
+            <dl className="doc-meta">
+              <div><dt>문서</dt><dd>마케팅 파트너 검토 자료</dd></div>
+              <div><dt>작성</dt><dd>Luna Marketing Lab</dd></div>
+              <div><dt>분야</dt><dd>B2B · B2C 디지털 마케팅</dd></div>
+            </dl>
+
+            <figure className="approval">
+              <table>
+                <thead>
+                  <tr><th scope="col">담당</th><th scope="col">검토</th><th scope="col">대표</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span className="approval-empty">귀사</span></td>
+                    <td><span className="approval-empty">귀사</span></td>
+                    <td className="approval-ceo">
+                      <Stamp className="stamp-seal">GMU<small>DIGITAL<br />MARKETING<br />ANALYTICS</small></Stamp>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <figcaption>
+                <strong>대표</strong> George Mason University<br />디지털마케팅·애널리틱스 학사
+              </figcaption>
+            </figure>
+          </div>
+
+          <h1 className="cover-title" id="hero-title">감이 아니라 데이터로<br className="br-wide" /> 판단하는 마케팅</h1>
+
+          <ul className="report">
+            <li>
+              <p className="report-main"><b>목표</b> 측정할 수 있는 KPI를 먼저 합의하고 시작합니다</p>
+              <p className="report-sub">GA4 설정과 KPI 대시보드로 같은 기준에서 성과를 봅니다</p>
+            </li>
+            <li>
+              <p className="report-main"><b>방법</b> 작게 검증하고, 효과가 확인된 곳에 예산을 늘립니다</p>
+              <p className="report-sub">타겟 세그멘테이션, A/B 테스트, ROAS 최적화</p>
+            </li>
+            <li>
+              <p className="report-main"><b>근거</b> 직접 운영하며 검증한 방법론을 그대로 적용합니다</p>
+              <p className="report-sub">TripSIM·FlytoX·원작소를 네이밍부터 광고·SNS까지 직접 운영</p>
+            </li>
           </ul>
-          <a href="#contact" className="nav-cta" onClick={(e) => scrollToSection(e, 'contact')}>문의하기</a>
-        </div>
-      </nav>
 
-      {/* Hero Section */}
-      <section className="hero" id="hero">
-        <div className="hero-container">
-          <div className="hero-content">
-            <div className="hero-tag">LUNA MARKETING LAB</div>
-            <h1 className="hero-headline">Make<br/>the <span>future</span></h1>
-            <p className="hero-desc">B2B부터 B2C까지, 실 데이터 기반의<br/>Full-Funnel 디지털 마케팅</p>
-            <div className="hero-cta">
-              <a href="#contact" className="btn-primary" onClick={(e) => scrollToSection(e, 'contact')}>프로젝트 문의 →</a>
-              <a href="#portfolio" className="btn-secondary" onClick={(e) => scrollToSection(e, 'portfolio')}>포트폴리오 보기</a>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <div className="stats-grid">
-              <div className="stat-card">
-                <div className="stat-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
-                </div>
-                <div className="stat-label">통합 마케팅</div>
-                <div className="stat-value">B2B + B2C</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="20" x2="18" y2="10"/>
-                    <line x1="12" y1="20" x2="12" y2="4"/>
-                    <line x1="6" y1="20" x2="6" y2="14"/>
-                  </svg>
-                </div>
-                <div className="stat-label">의사결정 기준</div>
-                <div className="stat-value highlight">실 데이터 중심</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </div>
-                <div className="stat-label">서비스 범위</div>
-                <div className="stat-value">기획부터 성과까지</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <form className="request" onSubmit={quick.onSubmit} aria-label="간단 상담 요청">
+            <div className="request-label">검토 요청</div>
+            <label className="request-field">
+              <span className="sr-only">회사명</span>
+              <input name="company" placeholder="회사명" value={quick.data.company} onChange={quick.onChange} required autoComplete="organization" />
+            </label>
+            <label className="request-field">
+              <span className="sr-only">이메일</span>
+              <input type="email" name="email" placeholder="회신받을 이메일" value={quick.data.email} onChange={quick.onChange} required autoComplete="email" />
+            </label>
+            <button type="submit" className="btn btn-red request-btn" disabled={quick.status === 'submitting'}>
+              {quick.status === 'submitting' ? '보내는 중…' : '상담 요청'}
+            </button>
+            {quick.status === 'success' && <Stamp className="stamp-received">접수</Stamp>}
+          </form>
+          <p className="request-note" role="status">
+            {quick.status === 'success' && '접수되었습니다. 24시간 내 담당자가 회신드립니다.'}
+            {quick.status === 'error' && <span className="is-error">전송하지 못했습니다. 잠시 후 다시 시도하시거나 benkim08@lunamarketinglab.com 으로 메일 주세요.</span>}
+            {(quick.status === 'idle' || quick.status === 'submitting') && '회사명과 이메일만 남기시면 24시간 내 회신드립니다.'}
+          </p>
 
-      {/* About Section */}
-      <section className="section about" id="about">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-tag">ABOUT US</div>
-            <h2 className="section-title">검증된 마케팅, 측정 가능한 성장</h2>
-            <p className="section-subtitle">데이터와 성과로 증명하는 디지털 마케팅 전문 그룹</p>
-          </div>
-          <div className="about-content">
-            <div className="about-text">
-              <p>Luna Marketing Lab은 데이터 분석, 브랜드 전략, 퍼포먼스 마케팅을 중심으로 B2B·B2C 기업의 지속 가능한 성장을 만들어내는 디지털 마케팅 컨설팅 그룹입니다.</p>
-              <div className="about-highlight">
-                <p>우리는 직접 운영하는 서비스를 통해 마케팅 전략을 검증합니다. 이론이 아닌, 실전에서 증명된 방법론을 제공합니다.</p>
-              </div>
-              <p>다양한 클라이언트 프로젝트를 통해 쌓은 경험을 바탕으로, 귀사의 성장 파트너가 되겠습니다.</p>
-            </div>
-            <div className="about-features">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="20" x2="18" y2="10"/>
-                    <line x1="12" y1="20" x2="12" y2="4"/>
-                    <line x1="6" y1="20" x2="6" y2="14"/>
-                  </svg>
-                </div>
-                <div className="feature-title">Data-Driven</div>
-                <div className="feature-desc">판단은 데이터 기반으로</div>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <circle cx="12" cy="12" r="6"/>
-                    <circle cx="12" cy="12" r="2"/>
-                  </svg>
-                </div>
-                <div className="feature-title">Simplicity</div>
-                <div className="feature-desc">복잡한 문제는 간결하게</div>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8"/>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                  </svg>
-                </div>
-                <div className="feature-title">Transparency</div>
-                <div className="feature-desc">명확한 프로세스와 소통</div>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </div>
-                <div className="feature-title">Integrity</div>
-                <div className="feature-desc">책임있는 파트너십</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <div className="folio" aria-hidden="true">- 1 -</div>
+        </article>
 
-      {/* Services Section */}
-      <section className="section services" id="services">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-tag">SERVICES</div>
-            <h2 className="section-title">무엇을 도와드릴까요?</h2>
-            <p className="section-subtitle">브랜드 기획부터 성과 최적화까지, 성장의 모든 단계를 함께합니다</p>
-          </div>
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <polyline points="21 15 16 10 5 21"/>
-                </svg>
-              </div>
-              <div className="service-title">브랜드 전략</div>
-              <div className="service-desc">포지셔닝 전략, 브랜드 아이덴티티, 슬로건·톤앤매너 정의</div>
-              <a href="#contact" className="service-link" onClick={(e) => scrollToSection(e, 'contact')}>자세히 보기 →</a>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                  <polyline points="17 6 23 6 23 12"/>
-                </svg>
-              </div>
-              <div className="service-title">퍼포먼스 마케팅</div>
-              <div className="service-desc">Meta/TikTok Ads, 타겟 세그멘테이션, A/B 테스트</div>
-              <a href="#contact" className="service-link" onClick={(e) => scrollToSection(e, 'contact')}>자세히 보기 →</a>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                  <line x1="12" y1="18" x2="12.01" y2="18"/>
-                </svg>
-              </div>
-              <div className="service-title">SNS 운영</div>
-              <div className="service-desc">콘텐츠 캘린더, 크리에이티브 제작, 채널 운영</div>
-              <a href="#contact" className="service-link" onClick={(e) => scrollToSection(e, 'contact')}>자세히 보기 →</a>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
-                  <path d="M22 12A10 10 0 0 0 12 2v10z"/>
-                </svg>
-              </div>
-              <div className="service-title">데이터 분석</div>
-              <div className="service-desc">GA4 설정, KPI 대시보드, ROAS 최적화</div>
-              <a href="#contact" className="service-link" onClick={(e) => scrollToSection(e, 'contact')}>자세히 보기 →</a>
-            </div>
-          </div>
-        </div>
-      </section>
+        <Sheet id="about" page={2} num="Ⅰ" title="회사 개요">
+          <div className="two-col">
+            <ul className="report">
+              <li>
+                <p className="report-main">데이터 분석, 브랜드 전략, 퍼포먼스 마케팅을 중심으로 B2B·B2C 기업의 성장을 돕는 디지털 마케팅 컨설팅 그룹입니다</p>
+              </li>
+              <li>
+                <p className="report-main">직접 운영하는 서비스에서 먼저 검증한 방법만 제안합니다</p>
+                <p className="report-sub">이론이 아닌, 실전에서 확인한 방법론을 제공합니다</p>
+              </li>
+              <li>
+                <p className="report-main">다양한 클라이언트 프로젝트에서 쌓은 경험으로 귀사의 성장 파트너가 되겠습니다</p>
+              </li>
+            </ul>
 
-      {/* Portfolio Section */}
-      <section className="section portfolio" id="portfolio">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-tag">PORTFOLIO</div>
-            <h2 className="section-title">직접 운영하며 검증했습니다</h2>
-            <p className="section-subtitle">클라이언트와 함께 만들어낸 성과</p>
+            <table className="grid-table">
+              <caption>운영 원칙</caption>
+              <thead><tr><th scope="col">원칙</th><th scope="col">의미</th></tr></thead>
+              <tbody>
+                {principles.map((p) => (
+                  <tr key={p.name}><th scope="row">{p.name}</th><td>{p.desc}</td></tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="portfolio-grid">
-            {portfolioItems.map((item) => {
-              const Card = item.url ? 'a' : 'div'
+        </Sheet>
+
+        <Sheet id="services" page={3} num="Ⅱ" title="제공 서비스">
+          <p className="sheet-lead">브랜드 기획부터 성과 최적화까지, 필요한 단계만 골라 맡기실 수 있습니다.</p>
+          <table className="grid-table services-table">
+            <thead><tr><th scope="col">구분</th><th scope="col">주요 업무</th><th scope="col"><span className="sr-only">문의</span></th></tr></thead>
+            <tbody>
+              {services.map((s) => (
+                <tr key={s.name}>
+                  <th scope="row">{s.name}</th>
+                  <td>{s.work}</td>
+                  <td className="cell-action">
+                    <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>이 업무로 문의</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Sheet>
+
+        <Sheet id="portfolio" page={4} num="Ⅲ" title="수행 사례">
+          <p className="sheet-lead">직접 운영하며 검증했거나 클라이언트와 함께 진행한 프로젝트입니다.</p>
+          <ol className="cases">
+            {portfolioItems.map((item, i) => {
+              const Wrap = item.url ? 'a' : 'div'
               const linkProps = item.url ? { href: item.url, target: '_blank', rel: 'noopener noreferrer' } : {}
               return (
-                <Card className="portfolio-card" key={item.key} {...linkProps}>
-                  <div className="portfolio-image">
-                    <img src={item.img} alt={item.alt} loading="lazy" />
+                <li className="case" key={item.key}>
+                  <figure className="case-fig">
+                    <Wrap className={`case-img${item.contain ? ' is-contain' : ''}`} {...linkProps}>
+                      <img src={item.img} alt={`${item.alt} 화면`} loading="lazy" />
+                    </Wrap>
+                    <figcaption>[그림 {i + 1}] {item.alt}</figcaption>
+                  </figure>
+                  <dl className="case-body">
+                    <div><dt>프로젝트</dt><dd className="case-title">{item.title}</dd></div>
+                    <div><dt>분야</dt><dd>{item.category}</dd></div>
+                    <div><dt>수행 내용</dt><dd>{item.desc}</dd></div>
+                    <div><dt>키워드</dt><dd>{item.tags.join(' · ')}</dd></div>
+                    {item.url && (
+                      <div><dt>사이트</dt><dd><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url.replace('https://', '')}</a></dd></div>
+                    )}
+                  </dl>
+                </li>
+              )
+            })}
+          </ol>
+        </Sheet>
+
+        <Sheet id="process" page={5} num="Ⅳ" title="추진 절차 및 조건">
+          <h3 className="sub-title">1. 추진 절차</h3>
+          <ol className="flow">
+            {steps.map((s, i) => (
+              <li key={s.name}>
+                <strong><span className="flow-step">{i + 1}.</span> {s.name}</strong>
+                <span>{s.desc}</span>
+              </li>
+            ))}
+          </ol>
+
+          <h3 className="sub-title">2. 계약 조건</h3>
+          <table className="grid-table terms-table">
+            <tbody>
+              {terms.map((t) => (
+                <tr key={t.label}><th scope="row">{t.label}</th><td>{t.value}</td></tr>
+              ))}
+            </tbody>
+          </table>
+
+          <h3 className="sub-title">3. 자주 묻는 질문</h3>
+          <div className="faq">
+            {faqs.map((item, index) => {
+              const open = activeFaq === index
+              return (
+                <div className={`faq-item${open ? ' is-open' : ''}`} key={item.q}>
+                  <h4>
+                    <button
+                      type="button"
+                      className="faq-q"
+                      aria-expanded={open}
+                      aria-controls={`faq-a-${index}`}
+                      onClick={() => setActiveFaq(open ? null : index)}
+                    >
+                      <span className="faq-mark">Q.</span>
+                      <span className="faq-text">{item.q}</span>
+                      <svg className="faq-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" /></svg>
+                    </button>
+                  </h4>
+                  <div className="faq-a" id={`faq-a-${index}`} hidden={!open}>
+                    <span className="faq-mark">A.</span><p>{item.a}</p>
                   </div>
-                  <div className="portfolio-info">
-                    <div className="portfolio-category">{item.category}</div>
-                    <div className="portfolio-title">{item.title}</div>
-                    <div className="portfolio-desc">{item.desc}</div>
-                    <div className="portfolio-tags">
-                      {item.tags.map((tag) => <span className="portfolio-tag" key={tag}>{tag}</span>)}
-                    </div>
-                  </div>
-                </Card>
+                </div>
               )
             })}
           </div>
-        </div>
-      </section>
+        </Sheet>
 
-      {/* Process Section */}
-      <section className="section process" id="process">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-tag">PROCESS</div>
-            <h2 className="section-title">이렇게 진행됩니다</h2>
-            <p className="section-subtitle">체계적인 프로세스로 명확한 결과를 만들어갑니다</p>
-          </div>
-          <div className="process-steps">
-            <div className="process-step">
-              <div className="step-number">1</div>
-              <div className="step-title">분석</div>
-              <div className="step-desc">시장, 경쟁사, 타겟 고객 분석</div>
+        <Sheet id="contact" page={6} num="Ⅴ" title="검토 요청서">
+          <p className="sheet-lead">아래 신청서를 보내 주시면 24시간 내 담당자가 연락드립니다.</p>
+          <form className="apply" onSubmit={full.onSubmit}>
+            <table className="grid-table apply-table">
+              <tbody>
+                <tr>
+                  <th scope="row"><label htmlFor="f-company">회사명</label></th>
+                  <td><input id="f-company" name="company" placeholder="회사명을 입력하세요" value={full.data.company} onChange={full.onChange} required autoComplete="organization" /></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label htmlFor="f-name">담당자명</label></th>
+                  <td><input id="f-name" name="name" placeholder="성함을 입력하세요" value={full.data.name} onChange={full.onChange} required autoComplete="name" /></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label htmlFor="f-email">이메일</label></th>
+                  <td><input id="f-email" type="email" name="email" placeholder="회신받을 이메일" value={full.data.email} onChange={full.onChange} required autoComplete="email" /></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label htmlFor="f-message">문의 내용</label></th>
+                  <td><textarea id="f-message" name="message" rows={5} placeholder="프로젝트에 대해 간단히 설명해주세요" value={full.data.message} onChange={full.onChange} required /></td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="apply-foot">
+              <p className="apply-status" role="status">
+                {full.status === 'success' && '접수되었습니다. 24시간 내 연락드리겠습니다.'}
+                {full.status === 'error' && <span className="is-error">전송하지 못했습니다. 잠시 후 다시 시도하시거나 메일로 보내 주세요.</span>}
+              </p>
+              {full.status === 'success' && <Stamp className="stamp-received">접수</Stamp>}
+              <button type="submit" className="btn btn-red" disabled={full.status === 'submitting'}>
+                {full.status === 'submitting' ? '보내는 중…' : '요청서 보내기'}
+              </button>
             </div>
-            <div className="process-step">
-              <div className="step-number">2</div>
-              <div className="step-title">전략</div>
-              <div className="step-desc">목표 설정 및 실행 계획 수립</div>
-            </div>
-            <div className="process-step">
-              <div className="step-number">3</div>
-              <div className="step-title">실행</div>
-              <div className="step-desc">캠페인 운영 및 콘텐츠 제작</div>
-            </div>
-            <div className="process-step">
-              <div className="step-number">4</div>
-              <div className="step-title">최적화</div>
-              <div className="step-desc">데이터 기반 성과 분석</div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </form>
 
-      {/* FAQ Section */}
-      <section className="section faq" id="faq">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-tag">FAQ</div>
-            <h2 className="section-title">자주 묻는 질문</h2>
-          </div>
-          <div className="faq-list">
-            {[
-              { q: 'Q. 상담은 어떻게 진행되나요?', a: '온라인/오프라인 미팅 가능하며, 메일로 미팅 요청 연락주시면 24시간 내 연락드립니다.' },
-              { q: 'Q. 최소 계약 기간이 있나요?', a: '프로젝트 단위 계약 또는 월 단위 운영 계약 모두 가능합니다.' },
-              { q: 'Q. 광고 집행 비용은 포함인가요?', a: '대행비와 광고비는 별도로 진행됩니다.' },
-              { q: 'Q. 어떤 산업을 전문으로 하나요?', a: 'B2B IT·보안, 스타트업, SMB, 소비재, 여행·뷰티 분야 등을 중심으로 진행합니다.' }
-            ].map((item, index) => (
-              <div className={`faq-item ${activeFaq === index ? 'active' : ''}`} key={index}>
-                <div className="faq-question" onClick={() => toggleFaq(index)}>
-                  <div className="faq-q-text">{item.q}</div>
-                  <div className="faq-toggle">+</div>
-                </div>
-                <div className="faq-answer">
-                  <div className="faq-a-text">{item.a}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <dl className="office">
+            <div><dt>사무실</dt><dd>서울시 영등포구 국제금융로 10, 43층 (3IFC, 서울 국제 금융 센터)</dd></div>
+            <div><dt>이메일</dt><dd><a href="mailto:benkim08@lunamarketinglab.com">benkim08@lunamarketinglab.com</a></dd></div>
+            <div><dt>업무 시간</dt><dd>월–금 09:00–18:00</dd></div>
+          </dl>
+          <p className="doc-end">끝.</p>
+        </Sheet>
+      </main>
 
-      {/* Contact Section */}
-      <section className="section contact" id="contact">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-tag">CONTACT</div>
-            <h2 className="section-title">프로젝트를 시작해보세요</h2>
-            <p className="section-subtitle">24시간 내 담당자가 연락드립니다</p>
-          </div>
-          <div className="contact-content">
-            <div className="contact-form">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label className="form-label">회사명</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    placeholder="회사명을 입력하세요"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">담당자명</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    placeholder="성함을 입력하세요"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">이메일</label>
-                  <input 
-                    type="email" 
-                    className="form-input" 
-                    placeholder="이메일을 입력하세요"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">문의 내용</label>
-                  <textarea 
-                    className="form-textarea" 
-                    placeholder="프로젝트에 대해 간단히 설명해주세요"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                {status === 'success' ? (
-                  <div className="form-success">✓ 문의가 접수되었습니다. 24시간 내 연락드리겠습니다.</div>
-                ) : (
-                  <button type="submit" className="form-submit" disabled={status === 'submitting'}>
-                    {status === 'submitting' ? '전송 중...' : '문의하기'}
-                  </button>
-                )}
-                {status === 'error' && (
-                  <div className="form-error">전송에 실패했습니다. 다시 시도해주세요.</div>
-                )}
-              </form>
-            </div>
-            <div className="contact-info">
-              <div className="info-card">
-                <div className="info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </div>
-                <div className="info-title">Office</div>
-                <div className="info-value">서울시 영등포구 국제금융로 10, 43층<br/>(3IFC, 서울 국제 금융 센터)</div>
-              </div>
-              <div className="info-card">
-                <div className="info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                  </svg>
-                </div>
-                <div className="info-title">Email</div>
-                <div className="info-value">benkim08@lunamarketinglab.com</div>
-              </div>
-              <div className="info-card">
-                <div className="info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </div>
-                <div className="info-title">Business Hours</div>
-                <div className="info-value">Monday - Friday: 9am - 6pm</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-logo-text">LUNA MARKETING LAB</div>
-          <div className="footer-links">
-            <a href="#about" className="footer-link" onClick={(e) => scrollToSection(e, 'about')}>About</a>
-            <a href="#services" className="footer-link" onClick={(e) => scrollToSection(e, 'services')}>Services</a>
-            <a href="#portfolio" className="footer-link" onClick={(e) => scrollToSection(e, 'portfolio')}>Portfolio</a>
-            <a href="#contact" className="footer-link" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
-          </div>
-          <div className="footer-copy">© 2025 Luna Marketing Lab. All rights reserved.</div>
-        </div>
+      <footer className="colophon">
+        <span>LUNA MARKETING LAB</span>
+        <span>© {new Date().getFullYear()} Luna Marketing Lab. All rights reserved.</span>
       </footer>
-    </>
+    </div>
   )
 }
 
