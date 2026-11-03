@@ -51,7 +51,7 @@ Luna Marketing Lab(루나 마케팅 랩)은 B2B·B2C 기업을 위한 데이터 
   - TripSIM: eSIM 서비스, 네이밍부터 앱 런칭과 SNS까지
   - GNFortress: B2B 클라우드 보안, 금융권 레퍼런스 확보와 웹 UX 개선
   - FlytoX: AI 여행 플래너, https://flytox.co.kr
-  - SK쉴더스 × Tenable / 트렌드마이크로 / TXOne: 총판 SEO/GEO 랜딩
+  - SK쉴더스 채널 솔루션(Trend Micro · Tenable · TXOne): 총판 SEO/GEO 랜딩. 사이트에서는 카드 하나로 묶고 벤더는 작은 마크로만 표시
   - 원작소: 웹소설 플랫폼, https://wonjakso.com
 - **공개할 수 있는 수치 성과는 없다.** 실제 수치(ROAS, 전환율, 유입 증가 등)는 있지만 고객사 동의를 받기 전이라 비공개다. 사이트에 성과 수치, 고객 후기, 고객사 로고 월, 수상 이력을 지어내지 않는다. 데이터 기반이라는 주장은 수치 대신 방법(측정 도구, KPI 설계, 실험 절차)과 직접 운영 사례로 뒷받침한다.
 
