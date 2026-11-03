@@ -24,7 +24,7 @@
 
 ## 글꼴
 
-- 영문 큰 제목: Archivo Variable(npm `@fontsource-variable/archivo`로 직접 포함), 굵기 200, 대문자.
+- 영문 큰 제목: Syne Variable(npm `@fontsource-variable/syne`로 직접 포함), 굵기 700, 대문자. 2026-11 대표 선택으로 Archivo에서 변경.
 - 한글과 본문: Pretendard Variable(CDN).
 
 ## 구성

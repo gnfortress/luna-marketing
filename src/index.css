@@ -11,7 +11,7 @@
   --accent: #c65a1e;
   --accent-deep: #a8481a;
 
-  --font-display: 'Archivo Variable', 'Pretendard Variable', Pretendard, sans-serif;
+  --font-display: 'Syne Variable', 'Pretendard Variable', Pretendard, sans-serif;
   --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 
   --gutter: clamp(16px, 4vw, 56px);
@@ -134,12 +134,11 @@ ol, ul { padding: 0; list-style: none; }
 .hero-title {
   margin-top: clamp(28px, 6vh, 72px);
   font-family: var(--font-display);
-  font-weight: 200;
-  font-variation-settings: 'wdth' 100;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(46px, 9.6vw, 164px);
-  line-height: .92;
-  letter-spacing: -0.045em;
+  font-size: clamp(38px, 8.2vw, 140px);
+  line-height: .95;
+  letter-spacing: -0.03em;
 }
 .hero-line { display: block; }
 .hero-line-2 {
@@ -238,11 +237,11 @@ ol, ul { padding: 0; list-style: none; }
 }
 .display {
   font-family: var(--font-display);
-  font-weight: 200;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(44px, 7.4vw, 120px);
-  line-height: .92;
-  letter-spacing: -0.045em;
+  font-size: clamp(36px, 6.2vw, 100px);
+  line-height: .95;
+  letter-spacing: -0.03em;
 }
 .block-lead { max-width: 26em; color: var(--mute); font-size: 16px; }
 .block-kicker { font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 24px; }
@@ -261,7 +260,7 @@ ol, ul { padding: 0; list-style: none; }
 }
 .principles li { padding: 24px 24px 0 0; display: grid; gap: 6px; }
 .principles li + li { padding-left: 24px; border-left: 1px solid var(--line); }
-.principles strong { font-family: var(--font-display); font-weight: 400; font-size: 20px; letter-spacing: -0.02em; }
+.principles strong { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
 .principles span { color: var(--mute); font-size: 15px; }
 
 /* 서비스 */
@@ -345,8 +344,8 @@ a.work-media:hover img { transform: scale(1.03); }
   background: var(--surface);
 }
 .step-num {
-  font-family: var(--font-display); font-weight: 200;
-  font-size: 64px; line-height: 1; color: var(--accent); margin-bottom: 20px;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 56px; line-height: 1; color: var(--accent); margin-bottom: 20px;
 }
 .steps strong { font-size: 20px; letter-spacing: -0.02em; }
 .steps li > span:last-child { color: var(--mute); font-size: 15px; }
@@ -381,7 +380,7 @@ a.work-media:hover img { transform: scale(1.03); }
   display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 80px);
   scroll-margin-top: 40px;
 }
-.contact-display { display: flex; align-items: center; gap: .16em; flex-wrap: wrap; }
+.contact-display { display: flex; align-items: center; gap: .16em; flex-wrap: wrap; font-size: clamp(36px, 4.8vw, 76px); }
 .contact-moon { width: .7em; height: .7em; }
 .contact-head .block-lead { margin-top: 20px; }
 .office { margin-top: 40px; display: grid; gap: 12px; }
@@ -412,8 +411,8 @@ a.work-media:hover img { transform: scale(1.03); }
 }
 .footer-mark {
   display: flex; align-items: center; justify-content: space-between; gap: .1em;
-  font-family: var(--font-display); font-weight: 200; text-transform: uppercase;
-  font-size: clamp(30px, 7.6vw, 124px); line-height: 1; letter-spacing: -0.05em;
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(26px, 6.4vw, 104px); line-height: 1; letter-spacing: -0.03em;
   color: rgba(242, 241, 238, .9);
   white-space: nowrap;
 }
@@ -458,5 +457,5 @@ a.work-media:hover img { transform: scale(1.03); }
   .field-row { grid-template-columns: 1fr; }
   .nav { padding-left: 14px; }
   .nav-logo img { height: 28px; }
-  .footer-mark { font-size: 8vw; }
+  .footer-mark { font-size: 6.6vw; }
 }
